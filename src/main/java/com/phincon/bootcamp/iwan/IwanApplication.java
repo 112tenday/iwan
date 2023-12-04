@@ -8,6 +8,7 @@ public class IwanApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(IwanApplication.class, args);
+		System.out.println("This is new");
 	}
 
 }
