@@ -5,31 +5,31 @@ public class Account {
     String name;
     double amount;
 
-    public void setId( int id){
+    public void setId(int id) {
         this.id = id;
     }
 
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setAmount(double amount){
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
-    public int getId(){
+    public int getId() {
         return this.id;
     }
 
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 
-    public double getAmount(){
+    public double getAmount() {
         return this.amount;
     }
 
-    public String getIdString(){
-        return String.valueOf(this.id);
-    }
+    // public String getIdString() {
+    // return String.valueOf(this.id);
+    // }
 }
