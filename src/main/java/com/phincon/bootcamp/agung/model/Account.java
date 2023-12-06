@@ -1,7 +1,16 @@
 package com.phincon.bootcamp.agung.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Table
+@Entity
 public class Account {
+
+    @Id
     int id;
+
     String name;
     double amount;
 
