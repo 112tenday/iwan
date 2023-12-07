@@ -1,10 +1,10 @@
-package com.phincon.bootcamp.agung.service;
+package com.phincon.bootcamp.iwan.service;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import com.phincon.bootcamp.agung.model.Customer;
+import com.phincon.bootcamp.iwan.model.Customer;
 
 public interface CustomerService {
     List<Customer> getAllCustomers();

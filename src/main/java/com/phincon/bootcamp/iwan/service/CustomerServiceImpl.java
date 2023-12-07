@@ -1,10 +1,10 @@
-package com.phincon.bootcamp.agung.service;
+package com.phincon.bootcamp.iwan.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.phincon.bootcamp.agung.model.Customer;
-import com.phincon.bootcamp.agung.repository.CustomerRepository;
+import com.phincon.bootcamp.iwan.model.Customer;
+import com.phincon.bootcamp.iwan.repository.CustomerRepository;
 
 import java.util.List;
 import java.util.Map;
