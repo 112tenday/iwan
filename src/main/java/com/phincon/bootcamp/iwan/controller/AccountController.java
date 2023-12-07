@@ -33,21 +33,28 @@ public class AccountController {
 
     @PostMapping("/account")
     public Account save(@RequestBody AccountDto accountDto) {
+        Account account =new Account();
+        account.setId(accountDto.getId());
+        account.setAmount(accountDto.getAmount());
+        account.setName(accountDto.getName());
+        account.setCustomerId(accountDto.getCustomerId());
+        account.setType(accountDto.getType());
+        
         return accountService.save(accountDto);
     }
 
-    @PutMapping("/account")
-    public Account update(@RequestBody AccountDto accountDto) {
-        return accountService.update(accountDto);
-    }
+    // @PutMapping("/account")
+    // public Account update(@RequestBody AccountDto accountDto) {
+    //     return accountService.update(accountDto);
+    // }
 
-    @PatchMapping("/account")
-    public Account patch(@RequestBody AccountDto accountDto) {
-        return accountService.patch(accountDto);
-    }
+    // @PatchMapping("/account")
+    // public Account patch(@RequestBody AccountDto accountDto) {
+    //     return accountService.patch(accountDto);
+    // }
 
-    @DeleteMapping("/account/{id}")
-    public Account delete(@RequestBody String id) {
-        return accountService.delete(id);
-    }
+    // @DeleteMapping("/account/{id}")
+    // public Account delete(@RequestBody String id) {
+    //     return accountService.delete(id);
+    // }
 }

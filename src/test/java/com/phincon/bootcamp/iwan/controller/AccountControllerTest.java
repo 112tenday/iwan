@@ -1,4 +1,4 @@
-package com.phincon.bootcamp.agung.controller;
+package com.phincon.bootcamp.iwan.controller;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -14,8 +14,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 // import com.phincon.bootcamp.agung.controller.AccountController;
-import com.phincon.bootcamp.agung.model.Account;
-import com.phincon.bootcamp.agung.service.AccountService;
+import com.phincon.bootcamp.iwan.model.Account;
+import com.phincon.bootcamp.iwan.service.AccountService;
 
 @SpringBootTest
 class AccountControllerTest {
