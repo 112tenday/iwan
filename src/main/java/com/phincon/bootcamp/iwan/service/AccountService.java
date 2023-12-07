@@ -1,10 +1,10 @@
-package com.phincon.bootcamp.agung.service;
+package com.phincon.bootcamp.iwan.service;
 
 import java.util.List;
 // import java.util.Map;
 
-import com.phincon.bootcamp.agung.model.Account;
-import com.phincon.bootcamp.agung.model.AccountDto;
+import com.phincon.bootcamp.iwan.model.Account;
+import com.phincon.bootcamp.iwan.model.AccountDto;
 
 public interface AccountService {
     public Account getAccount(String id);

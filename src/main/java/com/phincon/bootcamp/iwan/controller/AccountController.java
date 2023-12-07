@@ -1,4 +1,4 @@
-package com.phincon.bootcamp.agung.controller;
+package com.phincon.bootcamp.iwan.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.phincon.bootcamp.agung.model.Account;
-import com.phincon.bootcamp.agung.model.AccountDto;
-import com.phincon.bootcamp.agung.service.AccountService;
+import com.phincon.bootcamp.iwan.model.Account;
+import com.phincon.bootcamp.iwan.model.AccountDto;
+import com.phincon.bootcamp.iwan.service.AccountService;
 
 @RestController
 @RequestMapping("/bootcamp")

@@ -1,4 +1,4 @@
-package com.phincon.bootcamp.agung.controller;
+package com.phincon.bootcamp.iwan.controller;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -16,9 +16,9 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.phincon.bootcamp.agung.model.Account;
-import com.phincon.bootcamp.agung.model.AccountDto;
-import com.phincon.bootcamp.agung.service.AccountService;
+import com.phincon.bootcamp.iwan.model.Account;
+import com.phincon.bootcamp.iwan.model.AccountDto;
+import com.phincon.bootcamp.iwan.service.AccountService;
 
 @WebMvcTest(AccountController.class)
 public class AccountControllerTest {
