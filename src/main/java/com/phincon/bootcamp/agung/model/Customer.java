@@ -10,19 +10,14 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Table(name = "Accounts")
 @Entity
-public class Account {
-
+@Table(name = "customers")
+public class Customer {
     @Id
-
-    String customerId;
-    String id;
-    String name;
-    String type;
-    String status;
-    Long amount;
-    Timestamp createdDate;
-    Timestamp updateDate;
+    private String id;
+    private String name;
+    private String status;
+    private Timestamp createdDate;
+    private Timestamp updateDate;
 
 }

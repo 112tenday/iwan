@@ -1,47 +1,69 @@
 package com.phincon.bootcamp.agung.controller;
 
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import com.phincon.bootcamp.agung.model.Account;
 import com.phincon.bootcamp.agung.service.AccountService;
 
+import java.util.List;
+// import java.util.Map;
+
 @RestController
-@RequestMapping("/test")
+@RequestMapping("/accounts")
 public class AccountController {
 
     @Autowired
-    AccountService accountService;
+    private AccountService accountService;
 
-    @GetMapping("/bootcamp/account")
-    public Account getAccount() {
-        return accountService.getAccount();
+    // GET /accounts
+    @GetMapping
+    public ResponseEntity<List<Account>> getAllAccounts() {
+        List<Account> accounts = accountService.getAllAccounts();
+        return new ResponseEntity<>(accounts, HttpStatus.OK);
     }
 
-    @GetMapping("/bootcamp/accounts")
-    public List<Account> getAccounts() {
-        return accountService.getAccounts();
+    // GET /accounts/{id}
+    @GetMapping("/{id}")
+    public ResponseEntity<Account> getAccountById(@PathVariable Long id) {
+        Account account = accountService.getAccountById(id);
+        return ResponseEntity.ok().body(account);
     }
 
-    @PostMapping("/bootcamp/account")
-    public Account save(@RequestBody Map<String, Object> body) {
-        Account account = new Account();
-        account.setId((int) body.get("id"));
-        account.setAmount((double) body.get("amount"));
-        account.setName((String) body.get("name"));
-        return accountService.save(account);
+    // POST /accounts
+    @PostMapping("/create")
+    public ResponseEntity<Account> createAccount(@RequestBody Account account) {
+        Account createdAccount = accountService.createAccount(account);
+        return new ResponseEntity<>(createdAccount, HttpStatus.CREATED);
     }
 
-    @GetMapping("/bootcamp/account/{id}")
-    public Account getAccountById(@PathVariable int id) {
-        return accountService.getAccountById(id);
+    // PUT /accounts/{id}
+    @PutMapping("/{id}")
+    public ResponseEntity<Account> updateAccount(@PathVariable Long id, @RequestBody Account account) {
+        Account updatedAccount = accountService.getAccountById(id);
+        if (updatedAccount != null) {
+            return new ResponseEntity<>(updatedAccount, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
+    // DELETE /accounts/{id}
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteAccount(@PathVariable Long id) {
+        accountService.deleteAccount(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    // PATCH /accounts/{id}
+    // @PatchMapping("/{id}")
+    // public ResponseEntity<Account> patchAccount(@PathVariable Long id,
+    // @RequestBody Map<String, Object> updates) {
+    // Account patchedAccount = accountService.patchAccount(id, updates);
+    // if (patchedAccount != null) {
+    // return new ResponseEntity<>(patchedAccount, HttpStatus.OK);
+    // }
+    // return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    // }
 }

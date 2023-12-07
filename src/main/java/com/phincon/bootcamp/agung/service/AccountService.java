@@ -1,19 +1,20 @@
 package com.phincon.bootcamp.agung.service;
 
 import java.util.List;
-
-import org.springframework.stereotype.Service;
+// import java.util.Map;
 
 import com.phincon.bootcamp.agung.model.Account;
 
-@Service
 public interface AccountService {
+    List<Account> getAllAccounts();
 
-    public Account getAccount();
+    Account getAccountById(Long id);
 
-    public List<Account> getAccounts();
+    Account createAccount(Account account);
 
-    public Account save(Account account);
+    Account updateAccount(Account account);
 
-    public Account getAccountById(int id);
+    void deleteAccount(Long id);
+
+    // Account patchAccount(Long id, Map<String, Object> updates);
 }

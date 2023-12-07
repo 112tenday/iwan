@@ -1,49 +1,90 @@
 package com.phincon.bootcamp.agung.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.mock;
 
-import org.junit.jupiter.api.BeforeAll;
+import java.sql.Timestamp;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class AccountTest {
+class AccountTest {
 
-    public static Account account;
+    private Account account;
 
-    @BeforeAll
-    public static void setup() {
+    @BeforeEach
+    void setUp() {
+        // Inisialisasi objek Account sebelum setiap pengujian
         account = new Account();
-        account.setId(1);
-        account.setName("agung");
-        account.setAmount(10.0);
     }
 
     @Test
-    void setId() {
-        account.setId(1);
-        assertTrue(true);
+    void testGetSetId() {
+        // Set ID ke 1
+        Long id = 1L;
+        account.setId(id);
+
+        // Pastikan getId() mengembalikan nilai yang diharapkan
+        assertEquals(id, account.getId());
     }
 
     @Test
-    void setName() {
+    void testGetSetType() {
+        // Set tipe akun
+        String type = "Savings";
+        account.setType(type);
+
+        // Pastikan getType() mengembalikan nilai yang diharapkan
+        assertEquals(type, account.getType());
     }
 
     @Test
-    void setAmount() {
+    void testGetSetCustomerId() {
+        // Set ID pelanggan
+        Long customerId = 100L;
+        account.setCustomerId(customerId);
+
+        // Pastikan getCustomerId() mengembalikan nilai yang diharapkan
+        assertEquals(customerId, account.getCustomerId());
     }
 
     @Test
-    void getId() {
-        assertEquals(1, account.getId());
+    void testGetSetAmount() {
+        // Set jumlah
+        Long amount = 5000L;
+        account.setAmount(amount);
+
+        // Pastikan getAmount() mengembalikan nilai yang diharapkan
+        assertEquals(amount, account.getAmount());
     }
 
     @Test
-    void getName() {
-        assertEquals("agung", account.getName());
+    void testGetSetStatus() {
+        // Set status
+        Boolean status = true;
+        account.setStatus(status);
+
+        // Pastikan getStatus() mengembalikan nilai yang diharapkan
+        assertEquals(status, account.getStatus());
     }
 
     @Test
-    void getAmount() {
-        assertEquals(10.0, account.getAmount());
+    void testGetSetCreatedDate() {
+        // Set tanggal dibuat
+        Timestamp createdDate = mock(Timestamp.class);
+        account.setCreatedDate(createdDate);
+
+        // Pastikan getCreatedDate() mengembalikan nilai yang diharapkan
+        assertEquals(createdDate, account.getCreatedDate());
+    }
+
+    @Test
+    void testGetSetUpdatedDate() {
+        // Set tanggal diperbarui
+        Timestamp updatedDate = mock(Timestamp.class);
+        account.setUpdatedDate(updatedDate);
+
+        // Pastikan getUpdatedDate() mengembalikan nilai yang diharapkan
+        assertEquals(updatedDate, account.getUpdatedDate());
     }
 }
