@@ -1,13 +1,17 @@
 package com.phincon.bootcamp.agung.model;
 
-import java.time.LocalDate;
-
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
 public class CustomerDto {
-    private String id;
-    private String name;
-    private String status;
-    private LocalDate birthDate;
+
+    @NotBlank(message = "id mandatory")
+
+    String id;
+
+    String customerId;
+    String name;
+    String status;
+    Long amount;
 }

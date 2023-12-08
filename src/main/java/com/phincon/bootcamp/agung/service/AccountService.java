@@ -4,17 +4,19 @@ import java.util.List;
 // import java.util.Map;
 
 import com.phincon.bootcamp.agung.model.Account;
+import com.phincon.bootcamp.agung.model.AccountDto;
 
 public interface AccountService {
-    List<Account> getAllAccounts();
+    public Account getAccount(String id);
 
-    Account getAccountById(Long id);
+    public List<Account> getAccounts();
 
-    Account createAccount(Account account);
+    public Account save(AccountDto accountDto);
 
-    Account updateAccount(Account account);
+    public Account patch(AccountDto accountDto);
 
-    void deleteAccount(Long id);
+    public Account update(AccountDto accountDto);
 
-    // Account patchAccount(Long id, Map<String, Object> updates);
+    public Account delete(String id);
+
 }

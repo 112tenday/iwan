@@ -1,69 +1,60 @@
 package com.phincon.bootcamp.agung.controller;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import com.phincon.bootcamp.agung.model.Account;
+import com.phincon.bootcamp.agung.model.AccountDto;
 import com.phincon.bootcamp.agung.service.AccountService;
 
-import java.util.List;
-// import java.util.Map;
+import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/accounts")
+@RequestMapping("/bootcamp")
 public class AccountController {
-
     @Autowired
-    private AccountService accountService;
+    AccountService accountService;
 
-    // GET /accounts
-    @GetMapping
-    public ResponseEntity<List<Account>> getAllAccounts() {
-        List<Account> accounts = accountService.getAllAccounts();
-        return new ResponseEntity<>(accounts, HttpStatus.OK);
+    @GetMapping("/account/{id}")
+    public Account getAccount(@PathVariable String id) {
+        return accountService.getAccount(id);
     }
 
-    // GET /accounts/{id}
-    @GetMapping("/{id}")
-    public ResponseEntity<Account> getAccountById(@PathVariable Long id) {
-        Account account = accountService.getAccountById(id);
-        return ResponseEntity.ok().body(account);
+    @GetMapping("/account")
+    public List<Account> getAccounts() {
+        return accountService.getAccounts();
     }
 
-    // POST /accounts
-    @PostMapping("/create")
-    public ResponseEntity<Account> createAccount(@RequestBody Account account) {
-        Account createdAccount = accountService.createAccount(account);
-        return new ResponseEntity<>(createdAccount, HttpStatus.CREATED);
+    @PostMapping("/account")
+    public ResponseEntity<Account> save(@Valid @RequestBody AccountDto accountDto) {
+        HttpHeaders responHeaders = new HttpHeaders();
+        responHeaders.set("MyResponHeader", "MyValue");
+        return new ResponseEntity<Account>(accountService.save(accountDto), responHeaders, HttpStatus.CREATED);
     }
 
-    // PUT /accounts/{id}
-    @PutMapping("/{id}")
-    public ResponseEntity<Account> updateAccount(@PathVariable Long id, @RequestBody Account account) {
-        Account updatedAccount = accountService.getAccountById(id);
-        if (updatedAccount != null) {
-            return new ResponseEntity<>(updatedAccount, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    @PutMapping("/account")
+    public Account update(@RequestBody AccountDto accountDto) {
+        return accountService.update(accountDto);
     }
 
-    // DELETE /accounts/{id}
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteAccount(@PathVariable Long id) {
-        accountService.deleteAccount(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    @PatchMapping("/account")
+    public Account patch(@RequestBody AccountDto accountDto) {
+        return accountService.patch(accountDto);
     }
 
-    // PATCH /accounts/{id}
-    // @PatchMapping("/{id}")
-    // public ResponseEntity<Account> patchAccount(@PathVariable Long id,
-    // @RequestBody Map<String, Object> updates) {
-    // Account patchedAccount = accountService.patchAccount(id, updates);
-    // if (patchedAccount != null) {
-    // return new ResponseEntity<>(patchedAccount, HttpStatus.OK);
-    // }
-    // return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    // }
+    @DeleteMapping("/account/{id}")
+    public Account delete(@RequestBody String id) {
+        return accountService.delete(id);
+    }
 }
