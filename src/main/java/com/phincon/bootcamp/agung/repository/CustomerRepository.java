@@ -7,5 +7,5 @@ import com.phincon.bootcamp.agung.model.Customer;
 
 @Repository
 public interface CustomerRepository extends CrudRepository<Customer, Long> {
-    // Jika ada metode tambahan khusus yang diperlukan, bisa ditambahkan di sini
+
 }

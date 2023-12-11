@@ -11,6 +11,7 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
@@ -37,10 +38,10 @@ public class AccountControllerTest {
         assertTrue(true);
     }
 
-    @Test
-    void testGetAccount() {
-        assertTrue(true);
-    }
+    // @Test
+    // void testGetAccount() {
+    // assertEquals(mockMvc, accountService);
+    // }
 
     @Test
     void testGetAccounts() {
@@ -99,7 +100,25 @@ public class AccountControllerTest {
     }
 
     @Test
-    void testUpdate() {
-        assertTrue(true);
+    void testUpdate() throws Exception {
+        AccountDto accountDto = new AccountDto();
+        accountDto.setId("1");
+        accountDto.setName("UpdatedName");
+        String requestBody = objectMapper.writeValueAsString(accountDto);
+
+        Account account = new Account();
+        account.setId(accountDto.getId());
+        account.setName(accountDto.getName());
+
+        Mockito.when(accountService.update(accountDto)).thenReturn(account);
+
+        mockMvc.perform(MockMvcRequestBuilders.put("/bootcamp/account")
+                .content(requestBody)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.id", is(account.getId())))
+                .andExpect(jsonPath("$.name", is(account.getName())))
+                .andDo(MockMvcResultHandlers.print());
     }
 }
