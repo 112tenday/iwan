@@ -1,0 +1,13 @@
+package com.phincon.bootcamp.iwan.model;
+
+import java.time.LocalDate;
+
+import lombok.Data;
+
+@Data
+public class CustomerDto {
+    private String id;
+    private String name;
+    private String status;
+    private LocalDate birthDate;
+}
