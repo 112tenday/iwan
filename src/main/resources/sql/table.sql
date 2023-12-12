@@ -42,7 +42,7 @@ CREATE TABLE whislist(
     updated_date TIMESTAMP
 );
 
-CREATE TABLE order (
+CREATE TABLE orders (
     id VARCHAR (36) NOT NULL,
     product_id VARCHAR (36) NOT NULL,
     customer_id VARCHAR (36) NOT NULL,
