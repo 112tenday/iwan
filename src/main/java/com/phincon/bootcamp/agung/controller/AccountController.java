@@ -1,6 +1,9 @@
 package com.phincon.bootcamp.agung.controller;
 
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -26,8 +29,16 @@ public class AccountController {
     @Autowired
     AccountService accountService;
 
+    Logger logger = LoggerFactory.getLogger(AccountController.class);
+
     @GetMapping("/account/{id}")
     public Account getAccount(@PathVariable String id) {
+        logger.info("message log");
+        logger.info("message log {}", id);
+        logger.error("fatal", Throwable.class);
+        logger.debug("message debug {}", id);
+        logger.trace("message {}", id);
+
         return accountService.getAccount(id);
     }
 

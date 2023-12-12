@@ -72,20 +72,14 @@ public class AccountControllerTest {
                 .andExpect(status().isCreated())
                 .andExpect(content().contentType("application/json"))
                 .andExpect(jsonPath("$.id", is(account.getId())))
-                // .andExpect(jsonPath("$.name", is(account.getName())))
                 .andDo(MockMvcResultHandlers.print());
     }
 
     @Test
     void testWithIdNull() throws Exception {
         AccountDto accountDto = new AccountDto();
-        // accountDto.setId(null);
         accountDto.setName("Mulyanto");
         String requestBody = objectMapper.writeValueAsString(accountDto);
-
-        // Account account = new Account();
-        // account.setId(accountDto.getId());
-        // account.setName(accountDto.getName());
 
         Mockito.when(accountService.save(accountDto)).thenReturn(null);
 
@@ -93,9 +87,6 @@ public class AccountControllerTest {
                 .content(requestBody)
                 .contentType("application/json"))
                 .andExpect(status().isCreated())
-                // .andExpect(content().contentType("application/json"))
-                // .andExpect(jsonPath("$.id", is(account.getId())))
-                // .andExpect(jsonPath("$.name", is(account.getName())))
                 .andDo(MockMvcResultHandlers.print());
     }
 
