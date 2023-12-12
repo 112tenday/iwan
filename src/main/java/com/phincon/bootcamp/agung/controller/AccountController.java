@@ -35,7 +35,6 @@ public class AccountController {
     public Account getAccount(@PathVariable String id) {
         logger.info("message log");
         logger.info("message log {}", id);
-        logger.error("fatal", Throwable.class);
         logger.debug("message debug {}", id);
         logger.trace("message {}", id);
 
