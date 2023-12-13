@@ -24,47 +24,18 @@ import com.phincon.bootcamp.agung.service.AccountService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/bootcamp")
 public class AccountController {
+    Logger logger = LoggerFactory.getLogger(AccountController.class);
+
     @Autowired
     AccountService accountService;
 
-    Logger logger = LoggerFactory.getLogger(AccountController.class);
+    @GetMapping ("/bootcamp/account/{id}")
+    public Account get Account(@PathVariable String id){
+        logger.info (format:"getAccount id {}",id);
 
-    @GetMapping("/account/{id}")
-    public Account getAccount(@PathVariable String id) {
-        logger.info("message log");
-        logger.info("message log {}", id);
-        logger.debug("message debug {}", id);
-        logger.trace("message {}", id);
-
-        return accountService.getAccount(id);
+        return accountService.getAccountById(id);
     }
 
-    @GetMapping("/account")
-    public List<Account> getAccounts() {
-        return accountService.getAccounts();
-    }
 
-    @PostMapping("/account")
-    public ResponseEntity<Account> save(@Valid @RequestBody AccountDto accountDto) {
-        HttpHeaders responHeaders = new HttpHeaders();
-        responHeaders.set("MyResponHeader", "MyValue");
-        return new ResponseEntity<Account>(accountService.save(accountDto), responHeaders, HttpStatus.CREATED);
     }
-
-    @PutMapping("/account")
-    public Account update(@RequestBody AccountDto accountDto) {
-        return accountService.update(accountDto);
-    }
-
-    @PatchMapping("/account")
-    public Account patch(@RequestBody AccountDto accountDto) {
-        return accountService.patch(accountDto);
-    }
-
-    @DeleteMapping("/account/{id}")
-    public Account delete(@RequestBody String id) {
-        return accountService.delete(id);
-    }
-}
