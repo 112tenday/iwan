@@ -1,10 +1,13 @@
-package com.phincon.bootcamp.agung.repository;
+package com.phincon.bootcamp.iwan.repository;
 
+import com.phincon.bootcamp.iwan.model.AccountRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import com.phincon.bootcamp.agung.model.Account;
+import com.phincon.bootcamp.iwan.model.Account;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class AccountRepositoryImpl implements AccountRepository {
 
     @Autowired
@@ -13,7 +16,7 @@ public class AccountRepositoryImpl implements AccountRepository {
     @Override
     public Account getAccountById(String id) {
         String sql = "SELECT * FROM ACCOUNTS WHERE ID = ?";
-        return jdbcTemplate.queryForObject(sql, Account.class, id);
+        return jdbcTemplate.queryForObject(sql, new AccountRowMapper(), id);
     }
 
 }

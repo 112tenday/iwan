@@ -1,4 +1,4 @@
-package com.phincon.bootcamp.agung.model;
+package com.phincon.bootcamp.iwan.model;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;

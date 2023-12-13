@@ -1,6 +1,6 @@
-package com.phincon.bootcamp.agung.service;
+package com.phincon.bootcamp.iwan.service;
 
-import com.phincon.bootcamp.agung.model.Account;
+import com.phincon.bootcamp.iwan.model.Account;
 
 public interface AccountService {
     public Account getAccountById(String id);

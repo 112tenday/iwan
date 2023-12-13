@@ -1,4 +1,4 @@
-package com.phincon.bootcamp.agung.model;
+package com.phincon.bootcamp.iwan.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

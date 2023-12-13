@@ -1,13 +1,13 @@
-package com.phincon.bootcamp.agung;
+package com.phincon.bootcamp.iwan;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class AgungApplication {
+public class IwanApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AgungApplication.class, args);
+		SpringApplication.run(IwanApplication.class, args);
 	}
 
 	// @Override

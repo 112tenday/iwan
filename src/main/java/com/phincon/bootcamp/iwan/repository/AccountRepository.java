@@ -1,7 +1,9 @@
-package com.phincon.bootcamp.agung.repository;
+package com.phincon.bootcamp.iwan.repository;
 
-import com.phincon.bootcamp.agung.model.Account;
+import com.phincon.bootcamp.iwan.model.Account;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface AccountRepository {
 
     public Account getAccountById(String id);
