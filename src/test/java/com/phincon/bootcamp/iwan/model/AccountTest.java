@@ -15,7 +15,7 @@ public class AccountTest {
         // Given
         String customerId = "1234";
         String id = "01";
-        String name = "Agung";
+        String name = "Iwan";
         String type = "Test";
         String status = "Active";
         Long amount = 1000L;
