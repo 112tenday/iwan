@@ -2,7 +2,12 @@ package com.phincon.bootcamp.iwan;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
 
+
+
+@OpenAPIDefinition(info =@Info(title = "Swagger Demo bootcamp", version = "1.0", description = "Documentation"))
 @SpringBootApplication
 public class IwanApplication {
 
@@ -15,7 +20,7 @@ public class IwanApplication {
 	// for (int i = 0; i < 10; i++) {
 	// Account account = new Account();
 	// account.setId(i);
-	// System.out.println("id :" + account.getId());
+	// System.out.println("id :" + account.getId());, version
 	// }
 
 	// boolean max = true;
