@@ -15,39 +15,40 @@ import java.util.List;
 @Repository
 public class AccountRepositoryImpl implements AccountRepository {
 
- Logger logger=LoggerFactory.getLogger(AccountRepositoryImpl.class);
+    Logger logger = LoggerFactory.getLogger(AccountRepositoryImpl.class);
 
-    private static  final String INACTIVE ="inactive";
+    private static final String INACTIVE = "inactive";
 
     @Autowired
     JdbcTemplate jdbcTemplate;
-    public AccountRepositoryImpl(JdbcTemplate jdbcTemplate){
+
+    public AccountRepositoryImpl(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
     @Override
     public Account getAccountById(String id) {
         String sql = "SELECT * FROM ACCOUNTS WHERE ID = ?";
-        return jdbcTemplate.queryForObject(sql, new AccountRowMapper(),new Object[]{id});
+        return jdbcTemplate.queryForObject(sql, new AccountRowMapper(), new Object[]{id});
     }
 
     @Override
-    public Account getAccountByIdAndName(String id,String name) {
+    public Account getAccountByIdAndName(String id, String name) {
         String sql = "SELECT * FROM ACCOUNTS WHERE ID = ? AND NAME = ?";
-        return jdbcTemplate.queryForObject(sql, new AccountRowMapper(), new Object[]{id,name});
+        return jdbcTemplate.queryForObject(sql, new AccountRowMapper(), new Object[]{id, name});
     }
 
     @Override
     public Account create(Account account) {
-        String  sql = "INSERT INTO ACCOUNTS(ID,CUSTOMER_ID,NAME,STATUS,TYPE,AMOUNT,CREATED_DATE) VALUES (?,?.?,?,?,?,?)";
-                int  rowAffected =jdbcTemplate.update(sql,account.getId(),account.getCustomerId(),account.getName(),account.getStatus(),account.getType(), LocalDateTime.now(),account.getId());
-                return account;
+        String sql = "INSERT INTO ACCOUNTS(ID,CUSTOMER_ID,NAME,STATUS,TYPE,AMOUNT,CREATED_DATE) VALUES (?,?.?,?,?,?,?)";
+        int rowAffected = jdbcTemplate.update(sql, account.getId(), account.getCustomerId(), account.getName(), account.getStatus(), account.getType(), LocalDateTime.now(), account.getId());
+        return account;
     }
 
     @Override
     public Account update(Account account) {
         String sql = "UPDATE ACCOUNTS SET CUSTOMER_ID=?,NAME=? ,STATUS=? ,TYPE=?, AMOUNT=? ,CREATED_DATE=? ";
-        int  rowAffected =jdbcTemplate.update(sql,account.getCustomerId(),account.getName(),account.getStatus(),account.getType(), LocalDateTime.now(),account.getId());
+        int rowAffected = jdbcTemplate.update(sql, account.getCustomerId(), account.getName(), account.getStatus(), account.getType(), LocalDateTime.now(), account.getId());
         return account;
     }
 

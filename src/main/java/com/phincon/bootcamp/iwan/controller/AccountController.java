@@ -14,10 +14,10 @@ import com.phincon.bootcamp.iwan.service.AccountService;
 
 @RestController
 public class AccountController {
-    Logger logger = LoggerFactory.getLogger(AccountController.class);
+    static Logger logger = LoggerFactory.getLogger(AccountController.class);
 
     @Autowired
-    AccountService accountService;
+    static AccountService accountService;
     @Operation(summary = "Get a tutorial object by title", description = "API to return tutorial List")
     //mocking description
     @ApiResponses(value = {
@@ -25,8 +25,9 @@ public class AccountController {
             @ApiResponse(responseCode = "404", description = "Not found - The product was not found")
     })
 
+
     @GetMapping ("/bootcamp/account/{id}")
-    public Account getAccount(@PathVariable String id){
+    public static Account getAccount(@PathVariable String id){
         logger.info("getAccount id {}",id);
         return accountService.getAccountById(id);
     }
